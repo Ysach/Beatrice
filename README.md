@@ -19,6 +19,8 @@ API接口主要是处理图片和文件上传的API接口
 启动： python manage.py runnserver
 数据库迁移：python manage.py makemigrations; python manage.py migrate
 
-4、缺陷
+5、如果你git clone下来使用代码库里面的sqlite数据库，默认的用户和密码：farmer@163.com/redhat
+
+5、缺陷
 
 本程序在css、js方面尚未做细致的网络优化、后续将做优化

@@ -1,0 +1,35 @@
+{% extends 'body.html' %}
+
+{% block head-css %}
+<link href="/static/confirm/jquery-confirm.min.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block side %}
+    {% include 'side_bar.html' %}
+{% endblock %}
+
+{% block top %}
+    {% include 'top_bar.html' %}
+{% endblock %}
+
+
+{% block test-contnet %}
+    {% include 'file_upload_content.html' %}
+{% endblock %}
+{% block footer %}
+            <footer>
+          <div class="pull-right">
+            <br/>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+{% endblock %}
+
+{% block table_js %}
+    {% include 'multi_task_js_component.html' %}
+    {% include 'table_js.html' %}
+    {% include 'file_js.html' %}
+{% endblock %}
+{% block bo-js %}
+{% endblock %}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class=" "><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- Meta, title, CSS, favicons, etc. -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Beatrice</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/static/icss/font-awesome.min.css" rel="stylesheet">
+    <!-- tables -->
+    <link href="/static/tables/dataTables.bootstrap.min.css" rel="stylesheet">
+
+
+    <!--file up load css-->
+	<!--link href="/static/plugins/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet">
+	<link href="/static/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="/static/css/jquery-ui.min.css" rel="stylesheet"-->
+	<link href="/static/css/custom2.css" rel="stylesheet">
+    <!--end file upload css-->
+
+    <!--media edit css-->
+    <!-- bootstrap-wysiwyg -->
+    <!--link href="/static/mediadel/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <!--link href="/static/mediadel/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <!--link href="/static/mediadel/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <!--link href="/static/mediadel/starrr.css" rel="stylesheet">
+
+    <!--end media edit css-->
+
+    <!--JS confirm css-->
+    <link href="/static/confirm/jquery-confirm.min.css" rel="stylesheet">
+    <!--end JS confirm css-->
+
+
+{% block test_css %}
+
+{% endblock %}
+
+    <!-- Custom Theme Style -->
+    <link href="/static/icss/custom.min.css" rel="stylesheet">
+
+
+
+  </head>
+  <body class="nav-md">
+  {% csrf_token %}
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="#" class="site_title"><i class="fa fa-drupal"></i> <span>Beatrice</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile">
+              <div class="profile_pic">
+
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+              {% block side %}
+              {% endblock %}
+          </div>
+        </div>
+
+      {% block top %}
+
+      {% endblock %}
+
+
+      {% block test-contnet %}
+
+      {% endblock %}
+        <!-- footer content -->
+      {% block footer %}
+        <footer>
+          <div class="pull-right">
+              Beatrice - Designed by Farmer
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+      {% endblock %}
+        <!-- /footer content -->
+      </div>
+    </div>
+
+
+{% block table_js %}
+{% endblock %}
+
+
+
+  </body>
+</html>

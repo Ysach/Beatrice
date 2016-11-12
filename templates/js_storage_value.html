@@ -1,0 +1,41 @@
+<script>
+
+
+$(document).ready(function() {
+    //$('.update').click(function () {
+    $('body').delegate('.update','click','tr',function(){
+        //var media = $(this).parent().parent().find('td').html();
+        var media_original_name = $(this).closest("tr").find('.original_name').text();
+        var media_num = $(this).closest("tr").find('.media_num').text();
+        var media_expert = $(this).closest("tr").find('.media_expert').text();
+        var expert_name_author = $(this).closest("tr").find('.expert_name_author').text();
+       // e.stopPropagation(); //<-------stop the bubbling of the event here
+
+        //console.log(media_original_name);
+        //console.log(media_num);
+        if (! window.localStorage){
+            alert("浏览器不支持localstorage");
+            return false;
+        }else{
+            var media_storage_val=window.localStorage;
+            media_storage_val["media_original_name"]=media_original_name;
+            media_storage_val["media_num"]=media_num;
+            media_storage_val["media_expert"]=media_expert;
+            media_storage_val["expert_name_author"]=expert_name_author;
+            var a=media_storage_val.media_num;
+            var b=media_storage_val.media_original_name;
+            var c=media_storage_val.media_expert;
+            var d=media_storage_val.expert_name_author;
+            console.log(a);
+            console.log(b);
+            console.log(c);
+            console.log(d);
+
+        }
+
+
+
+
+    });
+});
+</script>

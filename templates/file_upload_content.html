@@ -1,0 +1,82 @@
+
+
+
+<!--up load css-->
+{% block head-css %}
+<link href="/static/plugins/css/fileinput.min.css" rel="stylesheet">
+<link href="/static/css/bootstrap-select.min.css" rel="stylesheet">
+<link href="/static/css/jquery-ui.min.css" rel="stylesheet">
+{% endblock %}
+<!--end upload css-->
+
+
+
+<div class="right_col" role="main" style="background-color: white">
+    <div class="">
+
+<div class="col-md-9">
+    <div class="panel panel-default panel-right">
+      <div class="panel-body">
+
+          <div class="pad-ver">
+
+<select id="task_type" class="selectpicker" style="display: none;">
+    <option value="file_send">上传音频文件</option>
+    <option value="file_get">下载音频文件</option>
+</select>
+<div class="btn-group bootstrap-select">
+    <button type="button" class="btn dropdown-toggle selectpicker btn-info" data-toggle="dropdown" data-id="task_type" title="上传音频文件">
+        <span class="filter-option pull-left">上传音频文件</span>&nbsp;<span class="caret">
+
+        </span>
+    </button>
+    <div class="dropdown-menu open">
+        <ul class="dropdown-menu inner selectpicker" role="menu">
+            <li data-original-index="0" class="selected">
+                <a tabindex="0" class="" data-normalized-text="上传音频文件">
+                    <span class="text">上传音频文件</span><span class="fa fa-check check-mark"></span>
+                </a>
+            </li>
+            <!-- 一期不考虑使用这个功能
+            <li data-original-index="1"><a tabindex="0" class="" data-normalized-text="下载音频文件">
+                <span class="text">下载音频文件</span>
+                <span class="fa fa-check check-mark"></span>
+            </a>
+            </li>
+            -->
+        </ul>
+    </div>
+</div>
+
+            <!--
+          <select  id="task_type" class="selectpicker">
+            <option value="file_send">上传音频文件</option>
+            <option value="file_get">下载音频文件</option>
+          </select>
+          -->
+
+          <input id="file_upload" name="filename" type="file" multiple class="file-loading">
+
+
+          <div class="form-group">
+            <label for="exampleInputName2">音频期号</label>
+            <input type="text" placeholder="输入音频关联话题-媒资编号......" class="form-control" name="media_num" id="media_num" >
+          </div>
+          <button type="button" class="btn btn-success pull-right" onclick="SubmitTask('multi_file_transfer')">上传音频</button>
+
+
+          <div id="return-msgs"></div>
+
+
+          <div id="result-box">
+
+
+          </div>
+
+
+      </div>
+</div>
+        </div>
+    </div>
+    </div>
+    </div>

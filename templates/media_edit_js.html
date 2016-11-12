@@ -1,0 +1,29 @@
+<script>
+    $(document).ready(function() {
+        var media_storage_val=window.localStorage;
+        var media_num=media_storage_val.media_num;
+        var media_original_name=media_storage_val.media_original_name;
+        var media_expert=media_storage_val.media_expert;
+        var expert_name_author=media_storage_val.expert_name_author;
+        $("#media_num").val(media_num);
+        $("#media_original").val(media_original_name);
+        $("#media_expert").val(media_expert);
+        if (expert_name_author.length == 0){
+            $("#expert_name_author").val('王蕴芬');
+        }else{
+            $("#expert_name_author").val(expert_name_author);
+        }
+
+
+        var media_edit_array=new Array("media_num","media_original");
+        //生成不能修改的media数值
+        for (var i=0;i<media_edit_array.length;i++){
+        var cObj = document.getElementById(media_edit_array[i]);
+        cObj.setAttribute("readOnly",'true');
+            //设置成只读
+        }
+        $('.media-update').click(function(){
+            media_storage_val.clear();
+        });
+    });
+</script>

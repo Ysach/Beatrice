@@ -1,0 +1,28 @@
+{% extends 'body.html' %}
+
+{% block head-css %}
+<link href="/static/confirm/jquery-confirm.min.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block side %}
+    {% include 'side_bar.html' %}
+{% endblock %}
+
+{% block top %}
+    {% include 'top_bar.html' %}
+{% endblock %}
+
+
+{% block test-contnet %}
+    {% include 'index_content.html' %}
+{% endblock %}
+
+
+{% block table_js %}
+    {% include 'table_js.html' %}
+    {% include 'media_del_js_component.html' %}
+    {% include 'js_storage_value.html' %}
+{% endblock %}
+{% block bo-js %}
+{% endblock %}

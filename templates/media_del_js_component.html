@@ -1,0 +1,43 @@
+    <script src="/static/confirm/jquery-confirm.min.js"></script>
+    <script>
+    var media_list = {};
+    var media_del_username_val = $.trim($("#index_username").text());
+    media_list['media_del_username'] = media_del_username_val;
+    media_list["csrfmiddlewaretoken"] = $("input[name='csrfmiddlewaretoken']").val();
+    media_list['media_action'] = 'media_action_del';
+    $(document).ready(function(){
+    //$("button").click(function(){
+    $("body").delegate('.delete','click','button',function(){
+        var media_name_del_val = $.trim($(this).parent().parent().find("p").text());
+        // console.log(media_name_del_val);
+        media_list['media_name'] = media_name_del_val;
+        //$(this).("#media_name").slideToggle();
+        var result = $.confirm({
+            confirmButtonClass: 'btn-info',
+            cancelButtonClass: 'btn-danger',
+            cancel: function(){
+            // $.alert('已经取消');
+            },
+            confirm: function(){
+                //POST
+                $.post("{% url 'media_del' %}", media_list, function(callback){
+                        console.log(callback);
+                        task_id_obj = JSON.parse(callback);
+                        // RefreshGetTaskResult(task_id_obj.task_id);
+                    });
+                $.alert({
+                    content: '删除成功',
+                    confirm: function(){
+                        location.reload();
+                    }
+                });
+
+        }
+        });
+        // console.log(result);
+
+    });
+});
+
+
+    </script>

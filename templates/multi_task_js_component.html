@@ -1,0 +1,73 @@
+    <script type="text/javascript">
+
+    function SubmitTask(task_type){
+
+            FormVerification(task_type);
+
+
+
+    }
+    function FormVerification(task_type){
+        var err_list = [];//存储返回失败的信息
+        var success_list = [];//存储返回成功的信息
+        var data_list = {}; //存储所有的用户选择的主机和其它参数
+        data_list['task_type'] = task_type;
+
+        if(task_type == 'multi_file_transfer'){
+
+            var media_num_val = $.trim($("#media_num").val());
+            var index_username_val = $.trim($("#index_username").text()); //获取当前登录的用户名称
+            data_list['media_num'] = media_num_val;
+            data_list['index_username'] = index_username_val;
+
+            if (media_num_val.length == 0){
+                err_list.push(['验证失败',"请输入上传音频的期号!"]);
+            }else{
+                success_list.push(['验证成功',"恭喜您，上传成功"]);
+            }
+
+
+            //verify upload or download
+            var task_action = $("#task_type").val();
+            data_list['file_transfer_type'] = task_action;
+            if (task_action == 'file_send'){
+                if (upload_files.length ==0){
+                    err_list.push(['验证失败',"还未处理上传任何音频！"]);
+
+                }
+
+                data_list['upload_files'] = upload_files;
+
+            }
+
+        }
+
+
+        if (media_num_val.length == 0){
+             $("#return-msgs").html(" ");
+            $.each(err_list,function(index,item){
+                var err_msg = "<p style='color:red;'>" + index + ". " + item[1] + "</p>";
+                $("#return-msgs").append(err_msg);
+            })
+
+        }else{
+            $("#return-msgs").html(" ");
+            //前端返回成功信息
+            $.each(success_list,function(index,item){
+                var success_msg = "<p style='color:green;'>" + item[1] + "</p>";
+                $("#return-msgs").append(success_msg);
+            })
+
+            //提交任务
+            data_list["csrfmiddlewaretoken"] = $("input[name='csrfmiddlewaretoken']").val();
+
+            $.post("{% url 'submit_task' %}", data_list, function(callback){
+                console.log(callback);
+                task_id_obj = JSON.parse(callback);
+                // RefreshGetTaskResult(task_id_obj.task_id);
+            });//end post
+        }
+    }
+
+
+    </script>

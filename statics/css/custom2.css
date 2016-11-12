@@ -1,0 +1,12 @@
+.dataTables_filter{width:50%;float:right;text-align:right}
+.dataTables_paginate{float: right}
+.paging_simple_numbers{float: right}
+.table_size{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.media_edit_hover{
+    color: red;
+}

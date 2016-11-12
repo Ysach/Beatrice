@@ -1,0 +1,121 @@
+    <!-- jQuery -->
+    <script src="/static/ijs/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/static/ijs/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <!--script src="/static/ijs/fastclick.js"></script>
+    <!-- NProgress -->
+    <!--script src="/static/ijs/nprogress.js"></script>
+    <!-- tables js -->
+    <script src="/static/ijs/jquery.dataTables.min.js"></script>
+    <script src="/static/ijs/dataTables.bootstrap.min.js"></script>
+    <script src="/static/ijs/dataTables.buttons.min.js"></script>
+    <script src="/static/ijs/buttons.bootstrap.min.js"></script>
+    <!--script src="/static/ijs/buttons.flash.min.js"></script-->
+    <script src="/static/ijs/buttons.html5.min.js"></script>
+    <script src="/static/ijs/buttons.print.min.js"></script>
+    <!--script src="/static/ijs/dataTables.fixedHeader.min.js"></script-->
+    <!--script src="/static/ijs/dataTables.keyTable.min.js"></script-->
+    <!--script src="/static/ijs/dataTables.responsive.min.js"></script-->
+    <!--script src="/static/ijs/responsive.bootstrap.js"></script-->
+    <!--script src="/static/ijs/datatables.scroller.min.js"></script-->
+    <script src="/static/ijs/jszip.min.js"></script>
+    <script src="/static/ijs/pdfmake.min.js"></script>
+    <!--script src="/static/ijs/vfs_fonts.js"></script-->
+    <!-- Custom Theme Scripts -->
+    <script src="/static/ijs/custom.min.js"></script>
+    <!-- Datatables -->
+
+    <!--JS confirm js-->
+    <link src="/static/confirm/jquery-confirm.min.js" rel="stylesheet">
+    <!--end JS confirm js-->
+    <!-- tabledit-->
+    <link src="/static/tables/jquery.tabledit.min.js" rel="stylesheet">
+    <!--end tableedit-->
+
+<script>
+/*
+$(document).ready(function(){
+   $("#media_hover").hover(function(){
+     $(this).addClass("active");
+   },function(){
+     $(this).removeClass("media_edit_hover");
+   });
+});
+*/
+
+$(".nav li").on("click", function() {
+    $(".nav li").removeClass("active");
+    $(this).addClass("active");
+});
+
+</script>
+
+
+
+
+    <script>
+      $(document).ready(function() {
+        var handleDataTableButtons = function() {
+          if ($("#datatable-buttons").length) {
+            $("#datatable-buttons").DataTable({
+              dom: "Bfrtip",
+              buttons: [
+                {
+                  extend: "copy",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "csv",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "excel",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "pdfHtml5",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "print",
+                  className: "btn-sm"
+                },
+              ],
+              responsive: true
+            });
+          }
+        };
+
+        TableManageButtons = function() {
+          "use strict";
+          return {
+            init: function() {
+              handleDataTableButtons();
+            }
+          };
+        }();
+
+        $('#datatable').dataTable();
+        $('#datatable-keytable').DataTable({
+          keys: true
+        });
+
+        $('#datatable-responsive').DataTable();
+
+        $('#datatable-scroller').DataTable({
+          ajax: "js/datatables/json/scroller-demo.json",
+          deferRender: true,
+          scrollY: 380,
+          scrollCollapse: true,
+          scroller: true
+        });
+
+        var table = $('#datatable-fixed-header').DataTable({
+          fixedHeader: true
+        });
+
+        TableManageButtons.init();
+      });
+    </script>
+    <!-- /Datatables -->

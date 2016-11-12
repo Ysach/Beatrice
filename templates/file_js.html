@@ -1,0 +1,43 @@
+	<script src="/static/plugins/js/fileinput.min.js"></script>
+	<script src="/static/plugins/js/plugins/canvas-to-blob.js"></script>
+	<script src="/static/plugins/js/locales/zh.js"></script>
+
+<script type="text/javascript">
+ $(document).ready(function(){
+
+        upload_files = [];
+
+        $("#file_upload").fileinput({
+            uploadUrl: "{% url 'file_upload' %}", // server upload action
+            uploadAsync: true,
+            language:'zh',
+            maxFileSize:50000,
+            maxFileCount: 5,
+            allowedFileExtensions : ['mp3'],
+
+        });
+        $('#file_upload').on('fileuploaded', function(event, data, previewId, index) {
+            var form = data.form, files = data.files, extra = data.extra,
+                response = data.response, reader = data.reader;
+
+                console.log(response);
+                upload_files.push(response.uploaded_file_path);
+        });
+
+
+        $("#task_type").on("change",function(){
+            if (this.value == 'file_send'){
+                $(".file-input").removeClass("hide");
+                $("#file-download-to-local").addClass("hide")
+            }else{
+                $(".file-input").addClass("hide");
+                $("#file-download-to-local").removeClass("hide")
+            }
+
+        });//end on change
+
+
+ });
+
+
+</script>

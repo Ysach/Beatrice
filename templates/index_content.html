@@ -1,0 +1,84 @@
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_right">
+                  <div class="clearfix"></div>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>音频列表</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">设置</a>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content"></div>
+
+                <div id="jsGrid">
+
+                    <table id="datatable-buttons" class="table table-striped table-bordered" style="table-layout:fixed">
+                      <thead>
+                        <tr>
+                          <!--th class="table_size">#</th-->
+                          <th class="table_size">关联话题-媒资编号</th>
+                          <th class="table_size">专家解密-媒资编号</th>
+                          <th class="table_size">专家解密标题</th>
+                          <th class="table_size">专家解密音频地址</th>
+                          <th class="table_size">关联专家姓名</th>
+                          <th class="table_size">操作</th>
+                        </tr>
+                      </thead>
+
+
+                  <tbody>
+                  {% for f in file_all %}
+                    <tr id="media_tr">
+                        <!--td class="table_size">{{ forloop.counter }}</td-->
+                        <td class="table_size media_num">{{ f.media_num }}</td>
+                        <td class="table_size media_expert">{{ f.media_expert }}</td>
+                        <td class="table_size original_name">{{ f.original_name }}</td>
+
+                        <td class="table_size" >
+                            <a target="_blank" href="http://101.200.136.72:9998/opt/file/uploaded/bbcz/{{ f.new_name }}" name="media_name" id="media_name">
+                                <p onMouseOver=this.style.color="red" onmouseout=this.style.color="grey">http://101.200.136.72:9998/opt/file/uploaded/bbcz/{{ f.new_name }}</p>
+                            </a>
+                        </td>
+
+                        <td class="table_size expert_name_author">{{ f.expert_name }}</td>
+
+                        <td class="table_size">
+                            <a href="{% url 'edit_media' %}" id='media_edit_val' name="media_edit_val" type="button"   class="btn update btn-success btn-xs"><i class="fa fa-pencil-square-o"></i> 编辑 </a>
+                            <button type="margin-left:15px"   class="btn delete btn-danger btn-xs"><i class="fa fa-trash-o"></i>  删除 </button>
+                        </td>
+                    </tr>
+                  {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->

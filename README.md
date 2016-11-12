@@ -14,6 +14,11 @@ API接口主要是处理图片和文件上传的API接口
 3、后续增加批量执行的功能
 基于当前最流行的（salt、ansible、paramiko）
 
+4、使用
+默认使用的数据库是sqlite
+启动： python manage.py runnserver
+数据库迁移：python manage.py makemigrations; python manage.py migrate
+
 4、缺陷
 
 本程序在css、js方面尚未做细致的网络优化、后续将做优化

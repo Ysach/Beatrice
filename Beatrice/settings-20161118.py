@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import db
-import ldap, logging
-from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,7 +40,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'trans',
     'rest_framework',
-    'django_auth_ldap',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,43 +88,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-# For ldap configure
-logger = logging.getLogger('django_auth_ldap')
-logger.addHandler(logging.StreamHandler())
-logger.setLevel(logging.DEBUG)
-
-
-AUTH_LDAP_SERVER_URI = 'ldap://123.56.247.173:389'
-
-# If Your ldap not support anonymous search Please use follow  AUTH_LDAP_BIND_DN,AUTH_LDAP_BIND_PASSWORD
-AUTH_LDAP_BIND_DN = 'UID=zhangchanghong,OU=People,DC=hxkid,DC=cn'
-AUTH_LDAP_BIND_PASSWORD = '123@abc'
-OU = 'ou=People,dc=hxkid,dc=cn'
-# AUTH_LDAP_USER_SEARCH = LDAPSearch(OU, ldap.SCOPE_SUBTREE, "(&(objectClass=account)(sAMAccountName=%(user)s))")
-# AUTH_LDAP_START_TLS = True
-AUTH_LDAP_USER_SEARCH = LDAPSearch(OU, ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
-AUTH_LDAP_GROUP_SEARCH = LDAPSearch(
-    "ou=People,dc=hxkid,dc=cn",
-    ldap.SCOPE_SUBTREE,
-    "(objectClass=account)"
-)
-AUTH_LDAP_GROUP_TYPE = GroupOfNamesType(name_attr="cn")
-AUTH_LDAP_USER_ATTR_MAP = {
-    "name": "cn",
-    # "last_name": "sn",
-    # "email": "mail"
-}
-AUTH_LDAP_PROFILE_ATTR_MAP = {
-    "employee_number": "employeeNumber",
-    "home_directory": "homeDirectory"
-}
-AUTH_LDAP_ALWAYS_UPDATE_USER = True
-# Authentication
-AUTHENTICATION_BACKENDS = (
-    'django_auth_ldap.backend.LDAPBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 
 # Internationalization

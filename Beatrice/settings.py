@@ -98,12 +98,12 @@ logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.DEBUG)
 
 
-AUTH_LDAP_SERVER_URI = 'ldap://123.56.247.173:389'
+AUTH_LDAP_SERVER_URI = 'ldap://Your ldap server IP:389'
 
 # If Your ldap not support anonymous search Please use follow  AUTH_LDAP_BIND_DN,AUTH_LDAP_BIND_PASSWORD
-AUTH_LDAP_BIND_DN = 'UID=zhangchanghong,OU=People,DC=hxkid,DC=cn'
-AUTH_LDAP_BIND_PASSWORD = '123@abc'
-OU = 'ou=People,dc=hxkid,dc=cn'
+AUTH_LDAP_BIND_DN = 'UID=ldap用户名,OU=你的ldap用户组,DC=,DC='
+AUTH_LDAP_BIND_PASSWORD = '你的ldap用户名密码'
+OU = 'ou=,dc=,dc='
 # AUTH_LDAP_USER_SEARCH = LDAPSearch(OU, ldap.SCOPE_SUBTREE, "(&(objectClass=account)(sAMAccountName=%(user)s))")
 # AUTH_LDAP_START_TLS = True
 AUTH_LDAP_USER_SEARCH = LDAPSearch(OU, ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
